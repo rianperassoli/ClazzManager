@@ -1,0 +1,82 @@
+<form role="form" >
+    
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary" ng-click="salvar()"><i class="glyphicon glyphicon-ok"></i> Salvar</button>
+        </div>
+        
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-danger" ng-click="cancelar()"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+        </div>
+    </div>
+    
+    <div >
+        <p class="text-center"><b>Anotações</b></p>
+    </div>
+
+    <div class="form-group">
+        <input type="text" placeholder="Título da anotação" class="input-lg input-wide" ng-model="anotacao.titulo"/>
+    </div>
+    
+    <div class="form-group">
+        <textarea ng-model="anotacao.descricao" placeholder="Descreva a anotação..." class="input-lg input-wide" rows="6"></textarea>
+    </div>
+    
+    <div class="row">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ng-style="{'width' : '100%'}"><i class="glyphicon glyphicon-paperclip"></i> Anexar documento</button>
+    </div>
+    
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-paperclip"></i> Anexar documento</h4>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="row"> 
+                        <div class="col-sm-12">
+                            <button class="btn btn-default" ng-click="tirarFoto()" ng-style="{'width' : '100%'}"><i class="glyphicon glyphicon-camera"></i> Tirar foto</button> 
+                        </div>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-default" ng-style="{'width' : '100%'}"><i class="glyphicon glyphicon-search"></i> Buscar documento</button>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-danger" data-dismiss="modal" ng-style="{'width' : '100%'}"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <br>
+       
+    <div class="row">
+        <button type="button" class="btn btn-default" ng-click="publicar()" ng-style="{'width' : '100%'}"><i class="glyphicon glyphicon-cloud"></i> Publicar</button>
+    </div>
+        
+</form>

@@ -1,0 +1,62 @@
+<ul class="nav nav-pills">
+  <li role="presentation"><a href="#/home"><i class="glyphicon glyphicon-home"></i></a></li>
+  <li role="presentation"><a href="#/listar_alunos">Alunos</a></li>
+  <li role="presentation" class="active"><a href="#/diario_classe/listar_presencas">Presenças</a></li>
+  <li role="presentation"><a href="#/diario_classe/listar_avaliacoes">Avaliações</a></li>
+</ul>
+
+<div class="row">
+    <div class="col-xs-9">
+        <p class="text-center"><b>Alunos</b></p>
+    </div>
+    <div class="col-xs-3">
+        <button type="button" class="btn btn-primary input-wide" ng-click="salvar()"><i class="glyphicon glyphicon-floppy-disk"></i></button>
+    </div>
+</div>
+
+<div class="row">Data:<input type="date" placeholder="teste" ng-model="presencas.data" value="{{data}}" class="input-lg input-wide" /></div>
+
+<div ng-controller="ListaAlunoCtrl">    
+    <div  class="row" ng-repeat="mostraAluno in alunos">
+        <div class="col-xs-1" >
+            <img src="img/pessoadefault.png" class="img-circle img-responsive">
+        </div>
+        <div class="col-xs-10" >
+            <b>{{ mostraAluno.codigo }} - {{ mostraAluno.nome }}</b>
+        </div>
+        <div class="col-xs-1">
+             <input type="checkbox"/>
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+<table class="lista-visualizar">
+    <tr>
+        <td>Aluno aisudhisa </td>
+        <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+        <td>Aluno aisudhisa </td>
+        <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+        <td>Aluno aisudhisa </td>
+        <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+        <td>Aluno aisudhisa </td>
+        <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+        <td>Aluno aisudhisa </td>
+        <td><input type="checkbox"></td>>
+    </tr>
+    <tr>
+        <td>Aluno aisudhisa </td>
+        <td><input type="checkbox"></td>
+    </tr>
+</table>
+-->

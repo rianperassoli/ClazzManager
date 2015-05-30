@@ -1,0 +1,27 @@
+<ul class="nav nav-pills">
+  <li role="presentation"><a href="#/home"><i class="glyphicon glyphicon-home"></i></a></li>
+  <li role="presentation" class="active"><a href="#/listar_alunos">Alunos</a></li>
+  <li role="presentation"><a href="#/diario_classe/listar_presencas">Presenças</a></li>
+  <li role="presentation"><a href="#/diario_classe/listar_avaliacoes">Avaliações</a></li>
+</ul>
+
+<div class="row">
+    <div class="col-xs-9">
+        <p class="text-center"><b>Alunos</b></p>
+    </div>
+    <div class="col-xs-3">
+        <button type="button" class="btn btn-primary input-wide" ng-click="novo()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+    </div>
+</div>
+
+<div  class="row" ng-repeat="mostraAluno in alunos">
+    <div class="col-xs-2" >
+        <img src="img/pessoadefault.png" class="img-circle img-responsive">
+    </div>
+    <div class="col-xs-6" >
+        <a href="#/listar_alunos/{{mostraAluno.codigo}}"><b>{{ mostraAluno.codigo }} - {{ mostraAluno.nome }}</b></a> <br> {{ mostraAluno.dataNascimento }}
+    </div>
+    <div class="col-xs-3">
+        <button type="button" class="btn btn-danger input-wide" ng-click="excluir(mostraAluno)"><i class="glyphicon glyphicon-trash center-block"></i></button>
+    </div>
+</div>

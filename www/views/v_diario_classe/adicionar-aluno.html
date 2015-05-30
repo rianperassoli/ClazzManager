@@ -1,0 +1,35 @@
+<form role="form" >
+    
+    <div class="row">
+        <div class="col-xs-9">
+            <p class="text-center"><b>Aluno</b></p>
+        </div>
+        <div class="col-xs-3">
+            <a class="btn btn-add" href="#/listar_alunos"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <input type="text" placeholder="Informe o nome" class="input-lg input-wide" ng-model="aluno.nome"/>
+    </div>
+    
+    <div class="form-group">
+        Data de Nascimento:<input type="date" ng-model="aluno.dataNascimento" class="input-lg input-wide" value="{{aluno.dataNascimento}}" />
+    </div>
+    
+   
+    <div class="form-group"> Gênero:
+        <input type="radio" ng-model="aluno.genero" value="M">Masculino
+        <input type="radio" ng-model="aluno.genero" value="F">Feminino
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-primary input-wide" ng-click="cancelar()"><i class="glyphicon glyphicon-remove"></i>Cancelar</button>
+        </div>
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-primary input-wide" ng-click="salvar()"><i class="glyphicon glyphicon-floppy-disk"></i>Salvar</button>
+        </div>
+    </div>
+    
+</form>

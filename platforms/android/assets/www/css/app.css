@@ -1,0 +1,63 @@
+body { padding-bottom: 80px; }
+
+
+#menu-principal div ul li:first-child{
+    margin-left: 2px;
+}
+
+#menu-principal div ul li{
+    background-color: silver;    
+    width: 33%;
+    display: inline-block;  
+    margin-left: -5px;
+    text-align: center;
+}
+
+#menu-principal div ul li a i{
+    color: #428bca;
+    font-size: 25px;
+}
+
+#logo-home{
+  width: 50% !important;
+  height: auto;
+}
+
+.input-wide{
+    width: 100%;
+}
+
+.btn-add{
+    width: 100%;
+    background-color: #b9def0;
+    opacity: 0.5;
+}
+
+.lista-visualizar tr td:first-child{
+    width: 90%;
+}
+
+.splash {
+    display: none;
+}
+
+[ng-cloak].splash {
+    display: block !important;
+}
+
+.splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width:100%;	
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    background: #000;
+}
+
+.splash h2 {
+    text-align: center;
+    font-size: 4em;
+    color:white;			
+}

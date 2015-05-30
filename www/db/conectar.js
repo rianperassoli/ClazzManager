@@ -1,0 +1,191 @@
+
+var criarTabela = 'CREATE TABLE IF NOT EXISTS ';
+
+function prepareDatabase() {
+  var db = openDatabase('clazzmanager', '1.3', 'Base do ClazzManager', 5 * 1024 * 1024);
+    db.transaction(function(t) {
+        t.executeSql(criarTabela + 'Tipo_Arquivo(codigo    Integer primary key autoincrement,tipo      Varchar(50), descricao Varchar(50))');
+        
+        t.executeSql(criarTabela + 'Anotacao_Arquivo(                                                      \n\
+                                        codigo              Integer primary key autoincrement,             \n\
+                                        nome_arquivo        Text,                                          \n\
+                                        link_arquivo        Text,                                          \n\
+                                        data_hora           Text,                                          \n\
+                                        Tipo_Arquivo_codigo Integer,                                       \n\
+                                        FOREIGN KEY (Tipo_Arquivo_codigo) REFERENCES Tipo_Arquivo (codigo))\n\
+                                    )');
+        
+        t.executeSql(criarTabela + 'Anotacao(                                                                       \n\
+                                        codigo                  Integer primary key autoincrement,                  \n\
+                                        titulo                  Text,                                               \n\
+                                        descricao               Text,                                               \n\
+                                        data_cadastro           Text,                                               \n\
+                                        data_publicacao         Text,                                               \n\
+                                        Anotacao_Arquivo_codigo Integer,                                            \n\
+                                        Pessoa_codigo           Integer,                                            \n\
+                                        FOREIGN KEY (Pessoa_codigo) REFERENCES Pessoa (codigo)                      \n\
+                                    )');
+        
+        //t.executeSql("insert into Tipo_Arquivo(tipo, descricao) values ('JPEG', 'Documento de imagem .JPEG')");
+    
+/*        t.executeSql(criarTabela + 'Pessoa_Tipo(codigo INTEGER PRIMARY KEY AUTOINCREMENT, \n\
+                                    tipo TEXT NOT NULL)'
+        );
+        
+        t.executeSql(criarTabela + 'Tipo_Turma(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                               descricao TEXT NOT NULL)'
+        );
+        
+        t.executeSql(criarTabela + 'Curso(codigo INTEGER PRIMARY KEY AUTOINCREMENT, \n\
+                                          descricao TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Sala(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                         descricao TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Disciplina(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                               descricao TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Login(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                          usuario TEXT NOT NULL,\n\
+                                          senha TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Midia(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                          tipo TEXT NOT NULL,\n\
+                                          descricao TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Turno(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                          descricao TEXT NOT NULL,\n\
+                                          horaInicio TEXT NOT NULL,\n\
+                                          horaTermino TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Avaliacao(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                              descricao TEXT NOT NULL,\n\
+                                              dataHora TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Contato(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                            tipoDeContato TEXT NOT NULL,\n\
+                                            DescricaoContato TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Aula(codigo INTEGER PRIMARY KEY AUTOINCREMENT,data TEXT NOT NULL,descricao TEXT NOT NULL,horaInicio TEXT NOT NULL,horaFim TEXT NOT NULL)'
+        );
+    
+        t.executeSql(criarTabela + 'Comentario(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                               aula_codigo INTEGER NOT NULL,\n\
+                                               descricao TEXT NOT NULL,\n\
+                                               dataHora TEXT NULL,\n\
+                                               FOREIGN KEY (aula_codigo) REFERENCES Aula (codigo))'
+        );
+    
+        t.executeSql(criarTabela + 'Pessoa(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                           pessoa_Tipo INTEGER NOT NULL,\n\
+                                           contato_codigo INTEGER not null,\n\
+                                           login_codigo INTEGER NOT NULL,\n\
+                                           nome TEXT NOT NULL,\n\
+                                           dataNascimento TEXT NOT NULL,\n\
+                                           genero TEXT NOT NULL,\n\
+                                           situacao TEXT NOT NULL,\n\
+                                           nivelAcesso INTEGER,\n\
+                                           foto BLOB,\n\
+                                           FOREIGN KEY ( Pessoa_Tipo ) REFERENCES Pessoa_Tipo ( codigo ),\n\
+                                           FOREIGN KEY ( contato_codigo ) REFERENCES Contato ( codigo ),\n\
+                                           FOREIGN KEY ( login_codigo ) REFERENCES Login ( codigo ))'
+        );
+    
+/*        t.executeSql(criarTabela + 'Turma(codigo INTEGER PRIMARY KEY NOT NULL,\n\
+                                          turno INTEGER NOT NULL,\n\
+                                          professor INTEGER NOT NULL,\n\
+                                          tipo_Turma INTEGER NOT NULL,\n\
+                                          curso INTEGER NOT NULL,\n\
+                                          sala INTEGER NOT NULL,\n\
+                                          serie TEXT NOT NULL,\n\
+                                          dataInicio TEXT NOT NULL,\n\
+                                          dataFim TEXT NOT NULL,\n\
+                                          FOREIGN KEY ( Turno ) REFERENCES Turno ( codigo ),\n\
+                                          FOREIGN KEY ( Professor ) REFERENCES Pessoa ( codigo ),\n\
+                                          FOREIGN KEY ( Tipo_Turma ) REFERENCES Tipo_Turma ( codigo ),\n\
+                                          FOREIGN KEY ( Curso ) REFERENCES Curso ( codigo ),\n\
+                                          FOREIGN KEY ( Sala ) REFERENCES Sala ( codigo ))'
+        );
+    
+        t.executeSql(criarTabela + 'Diario_Classe(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                                  aula INTEGER NOT NULL,\n\
+                                                  descricao TEXT NOT NULL,\n\
+                                                  FOREIGN KEY ( Aula ) REFERENCES Aula ( codigo ))'
+        );
+    
+        t.executeSql(criarTabela + 'Presenca(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                             aula INTEGER NOT NULL,\n\
+                                             pessoa INTEGER NOT NULL,\n\
+                                             dataHora TEXT NULL,\n\
+                                             situacao TEXT NULL,\n\
+                                             observacao TEXT NULL,\n\
+                                             FOREIGN KEY ( Aula ) REFERENCES Aula ( codigo ), \n\
+                                             FOREIGN KEY ( Pessoa ) REFERENCES Pessoa ( codigo ))'
+        );
+    
+        t.executeSql(criarTabela + 'Nota(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                         pessoa INTEGER NOT NULL,\n\
+                                         avaliacao INTEGER NOT NULL,\n\
+                                         diario_Classe INTEGER NOT NULL,\n\
+                                         nota TEXT NOT NULL,\n\
+                                         dataHora TEXT NULL,\n\
+                                         FOREIGN KEY ( Pessoa ) REFERENCES Pessoa ( codigo ),\n\
+                                         FOREIGN KEY ( Avaliacao ) REFERENCES Avaliacao ( codigo ),\n\
+                                         FOREIGN KEY ( Diario_Classe ) REFERENCES Diario_Classe ( codigo ))'
+        );
+    
+        t.executeSql(criarTabela + 'Material(codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                             midia_codigo INTEGER NOT NULL,\n\
+                                             aula_codigo INTEGER NOT NULL,\n\
+                                             comentario INTEGER NOT NULL,\n\
+                                             descricao TEXT NOT NULL,conteudo TEXT NOT NULL,\n\
+                                             dataHora TEXT NULL,\n\
+                                             FOREIGN KEY ( Midia_codigo ) REFERENCES Midia ( codigo ),\n\
+                                             FOREIGN KEY ( Aula_codigo ) REFERENCES Aula ( codigo ),\n\
+                                             FOREIGN KEY ( Comentario ) REFERENCES Comentario ( codigo ))'
+        );
+    
+        t.executeSql(criarTabela + 'Disciplina_Turma(disciplina INTEGER NOT NULL,\n\
+                                                     turma INTEGER NOT NULL,PRIMARY KEY ( disciplina , turma ),\n\
+                                                     FOREIGN KEY ( Disciplina ) REFERENCES Disciplina ( codigo ),\n\
+                                                     FOREIGN KEY ( Turma ) REFERENCES Turma ( codigo ))'
+        );
+    
+        t.executeSql(criarTabela + 'Pessoa_Turma(pessoa_codigo INTEGER PRIMARY KEY AUTOINCREMENT,\n\
+                                                 turma_codigo INTEGER NOT NULL,\n\
+                                                 FOREIGN KEY ( Pessoa_codigo ) REFERENCES Pessoa(codigo),\n\
+                                                 FOREIGN KEY ( Turma_codigo ) REFERENCES Turma ( codigo ))'
+        );
+ 
+/*    t.executeSql("insert into Pessoa_Tipo(tipo) values ('aluno')");
+    t.executeSql("insert into Tipo_Turma(descricao) values ('turma regular')"); 
+    t.executeSql("insert into Curso(descricao) values ('Sistemas de informação')"); 
+    t.executeSql("insert into Sala(descricao) values ('Bloco E2')"); 
+    t.executeSql("insert into Disciplina(descricao) values ('Matemática')"); 
+    t.executeSql("insert into Login(usuario, senha) values ('rian', '1234')"); 
+    t.executeSql("insert into Midia(tipo, descricao) values ('video', 'www.youtube.com.br')");
+    t.executeSql("insert into Turno(descricao, horaInicio, horaTermino) values ('Noturno', '19:00:00', '23:00:00')");  
+    t.executeSql("insert into Avaliacao(descricao, dataHora) values ('Prova A1', '07/10/2015 19:00:00')");
+    t.executeSql("insert into Contato (tipoDeContato, DescricaoContato) values ('email', 'rian.perassoli@gmail,com')");
+    t.executeSql("insert into Aula (data, descricao, horaInicio, horaFim) values ('07/10/2015', 'aula a noite', '19:00:00', '23:00:00')");
+    t.executeSql("insert into Comentario(aula_codigo, descricao, dataHora) values (1, 'Video bom', '06/10/2014 22:01:00')");
+    t.executeSql("insert into Pessoa (pessoa_Tipo, contato_codigo, login_codigo, nome, dataNascimento, genero, situacao, nivelAcesso) values (1, 1, 1, 'Rian', '03/06/1992', 'M', 'ativo', 3)");
+    t.executeSql("insert into Turma (turno, professor, tipo_Turma, curso, sala, serie, dataInicio, dataFim) values (1, 1, 1, 1, 1, '3ª', '06/10/2014', '06/10/2015')");
+    t.executeSql("insert into Diario_classe (aula, descricao) values (1, 'turma bla teste')");
+    t.executeSql("insert into Presenca (aula, pessoa, dataHora, situacao, observacao) values (1, 1, '07/10/2015 19:00:00', 'Presente', 'ok')");
+    t.executeSql("insert into Nota (pessoa, avaliacao, diario_Classe, nota, dataHora) values (1, 1, 1, '9.2', '07/10/2015 19:00:00')");
+    t.executeSql("insert into Material (midia_codigo, aula_codigo, comentario, descricao, conteudo, dataHora) values (1, 1, 1, 'livro digital', 'teset','07/10/2015 19:00:00')");
+    t.executeSql("insert into Disciplina_Turma (disciplina, turma) values (1, 1)");
+    t.executeSql("insert into Pessoa_Turma (pessoa_codigo, turma_codigo) values (1, 1)"); */
+         
+    });
+    return db;
+}
