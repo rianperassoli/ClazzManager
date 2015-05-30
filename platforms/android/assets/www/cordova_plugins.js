@@ -27,13 +27,19 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/com.dvdbrink.cordova.indexeddb/www/IndexedDBShim.js",
+        "id": "com.dvdbrink.cordova.indexeddb.indexeddb",
+        "runs": true
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.msopentech.websql": "0.0.6",
-    "org.apache.cordova.camera": "0.3.4"
+    "org.apache.cordova.camera": "0.3.4",
+    "com.dvdbrink.cordova.indexeddb": "0.1.0"
 }
 // BOTTOM OF METADATA
 });

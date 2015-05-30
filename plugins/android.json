@@ -33,6 +33,9 @@
         },
         "org.apache.cordova.camera": {
             "PACKAGE_NAME": "br.com.clazzmanager"
+        },
+        "com.dvdbrink.cordova.indexeddb": {
+            "PACKAGE_NAME": "br.com.clazzmanager"
         }
     },
     "dependent_plugins": {}
