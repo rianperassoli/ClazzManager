@@ -90,19 +90,14 @@ angular.module('ClazzManager.listar-anotacoes', ['ngRoute'])
     };
     
     $scope.tirarFoto = function(){
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI });
-
-        function onSuccess(imageURI) {
-            $scope.db.transaction(function(t) {
-                t.executeSql("insert into Anotacao_Arquivo (nome_arquivo, link_arquivo, data_hora, Tipo_Arquivo_codigo) values(?, ?, datetime('now'), ?)", ['teste', imageURI, 1], function(t, results) {                       
-                alert('Salvou');
-                });
-            });
+        navigator.camera.getPicture(onFotoSuccess, onFotoFail, {quality: 50, destinationType: Camera.DestinationType.DATA_URL});
+        
+        function onFotoSuccess(foto){
+            document.getElementById('anotacao-imagem').src = "data:image/jpeg;base64," + foto; 
         }
-
-        function onFail(message) {
-            alert('Falha ao carregar imagem: ' + message);
+        
+        function onFotoFail(foto){
+            navigator.notification.alert ("Falha ao capturar foto: " , null, "Falha", ["OK"]);
         }
     };
 }])

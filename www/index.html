@@ -20,19 +20,9 @@
     </head>
     <body id="clazzmanager">
 
-        <div ng-view class="container-fluid"></div> 
-
-        <!-- MENU RODAPE -->
-        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="menu-principal">
-            <div class="container">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/home"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="#/listar_alunos"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#/listar-anotacoes"><i class="glyphicon glyphicon-pencil"></i></a></li>                  
-                </ul>
-            </div>
-        </nav>
+        <div ng-view class="container-fluid"></div>
         
+            
         <script type="text/javascript" src="db/conectar.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script src="js/angular/angular.js"></script>
@@ -44,5 +34,7 @@
         <script src="views/v_anotacao/anotacao.js"></script>
         <script src="views/v_diario_classe/diario_classe.js"></script>
         <script src="views/v_home/home.js"></script>
+        <script src="views/v_registro/registro.js"></script>
+        <script src="views/v_login/login.js"></script>
     </body>
 </html>

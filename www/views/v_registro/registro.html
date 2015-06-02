@@ -1,0 +1,51 @@
+<div class="row">
+    <p class="text-center"><b>Registro</b></p>
+</div>
+
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary" ng-click="salvar()"><i class="glyphicon glyphicon-ok"></i> Salvar</button>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-danger" ng-click="cancelar()"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+    </div>
+</div>
+
+<br />
+
+<label class="radio-inline"><input type="radio" name="tipo_pessoa" value="1" ng-model="$scope.registro.tipoPessoa">Professor</label>
+<label class="radio-inline"><input type="radio" name="tipo_pessoa" value="2" ng-model="$scope.registro.tipoPessoa">Aluno</label>
+
+<br />
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">Nome</span>
+  <input type="text" class="form-control" placeholder="nome completo..." aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">Nasceu em</span>
+  <input type="date" class="form-control" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">Login</span>
+  <input type="text" class="form-control" placeholder="escolha o login..." aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">Senha</span>
+  <input type="text" class="form-control" placeholder="escolha a senha..." aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">Confirme a senha</span>
+  <input type="text" class="form-control" placeholder="Confirme a senha..." aria-describedby="basic-addon1">
+</div>  
+
+<br />
+
+<button type="button" class="btn btn-default btn-lg input-wide" ng-click="tirarFoto()">
+    <i class="glyphicon glyphicon-camera"></i> Capturar Foto
+</button>

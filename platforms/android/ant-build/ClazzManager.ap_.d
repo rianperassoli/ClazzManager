@@ -55,6 +55,7 @@ D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\icone128.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\logo.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\pessoadefault.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\Splash.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\student.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\js\angular \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\js\angular-loader \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\js\angular-mocks \

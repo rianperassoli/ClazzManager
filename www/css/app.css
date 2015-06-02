@@ -23,6 +23,28 @@ body { padding-bottom: 80px; }
   height: auto;
 }
 
+
+#anotacao-imagem{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+#image-user {
+  max-height: 100px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto !important;
+  margin-top: 20px !important;
+  margin-bottom: 50px !important;
+}
+
+#link-registrar{
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
 .input-wide{
     width: 100%;
 }

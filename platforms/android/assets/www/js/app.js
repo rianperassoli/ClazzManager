@@ -7,5 +7,7 @@ angular.module('ClazzManager', [
   'ClazzManager.home'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/home'});
+  $routeProvider.otherwise({redirectTo: ''});
 }]);
+
+//$routeProvider.otherwise({redirectTo: '/home'});

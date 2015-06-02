@@ -20,18 +20,25 @@
     </head>
     <body id="clazzmanager">
 
-        <div ng-view class="container-fluid"></div> 
+        <div ng-view class="container-fluid"></div>
+        
+        <div id="image-user">
+            <img src="img/student.png" style="border-radius : 50% !important">
+        </div>
+        
+        <label class="narrow-control label-inline" for="edt-login">Login:</label>
+        <input class="wide-control form-control default" type="text" placeholder="insira o nome de usuário..." id="edt-login">
 
-        <!-- MENU RODAPE -->
-        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="menu-principal">
-            <div class="container">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/home"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="#/listar_alunos"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#/listar-anotacoes"><i class="glyphicon glyphicon-pencil"></i></a></li>                  
-                </ul>
-            </div>
-        </nav>
+        <label class="narrow-control label-inline">Senha:</label>
+        <input class="wide-control form-control default" type="text" placeholder="insira a senha...">
+
+        <button class="btn btn-lg btn-success input-wide" style="margin-top: 10px" id="btn-entrar">Entrar</button>
+        
+        <button class="btn btn-lg btn-danger input-wide" id="btn-sair">Sair</button>
+        
+        <br/>
+
+        <a id="link-registrar" href="">Registrar-se</a>
         
         <script type="text/javascript" src="db/conectar.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
