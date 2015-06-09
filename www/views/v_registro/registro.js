@@ -29,13 +29,7 @@ angular.module('ClazzManager.registro', ['ngRoute'])
         }
     };  
     
-    $scope.salvar = function(){
-       if($scope.registro.tipoPessoa === 'aluno'){
-           $scope.registro.tipoPessoa = 1;
-        } else {
-           $scope.registro.tipoPessoa = 2;
-        }
-       
+    $scope.salvar = function(){ 
         if ($scope.registro.nome === ''){
            alert('O campo nome deve ser preenchido');
         } else if ($scope.registro.dataNascimento === ''){
@@ -49,16 +43,29 @@ angular.module('ClazzManager.registro', ['ngRoute'])
         } else if ($scope.senha !== $scope.confirmaSenha){
             alert('As senhas não coincidem');
         } else {
+            if($scope.registro.tipoPessoa === 'aluno'){
+                $scope.registro.tipoPessoa = 1;
+            } else {
+                $scope.registro.tipoPessoa = 2;
+            };
+            
             $scope.db.transaction(function(t) {                
-                t.executeSql("select codigo, login_codigo, nome, dataNascimento from Pessoa where nome = ? and dataNascimento = ?", [$scope.registro.nome, $scope.registro.dataNascimento], function(t, results) {
+                t.executeSql("select codigo, login_codigo, nome, dataNascimento from Pessoa where nome = ? and dataNascimento = ?", [$scope.registro.nome, $scope.registro.dataNascimento], function(t, results) {                    
                     if(results.rows.length > 0){
+                        $scope.registro.codigo = results.rows.item(0).codigo;
                         if(results.rows.item(0).login_codigo > 0){
                             alert('Você já possui um usuário cadastrado');
                         } else {
                             $scope.db.transaction(function(t) {                
                                 t.executeSql("insert into Login (usuario, senha) values (?, ?)", [$scope.registro.login, $scope.registro.senha], function(t, results) {
                                     alert('Usuário cadastrado com sucesso');
-                                    console.log(results);
+                                  
+                                    t.executeSql("select * from Login where usuario = ? and senha = ?", [$scope.registro.login, $scope.registro.senha], function(t, results) {
+                                        t.executeSql("update Pessoa set login_codigo = ? where codigo = ? "[results.rows.item(0).login_codigo, $scope.registro.codigo],null, null);                                    
+                                    }), function(e){
+                                        alert('Erro: '+ e.message);
+                                    };
+                                    
                                 }), function(e){
                                     alert('Erro: '+ e.message);
                                 };

@@ -10,7 +10,8 @@ angular.module('ClazzManager.login', ['ngRoute'])
 }])
 
 .controller('LoginCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location) {
-        
+     
+    $scope.mensagem = '';
     $scope.login = {codigo:null, usuario:'', senha:''};
     $scope.db = prepareDatabase();
 
@@ -23,10 +24,12 @@ angular.module('ClazzManager.login', ['ngRoute'])
         tx.executeSql("SELECT * FROM Login WHERE usuario=? AND senha=?", [$scope.login.usuario, $scope.login.senha], 
         function (tx, rs) {
             if (rs.rows.length > 0){
+                $scope.mensagem = '';
                 $scope.login.codigo = rs.rows.item(0).codigo;                
                 $scope.Entrar();
             } else 
-                alert("inválido");
+                $scope.mensagem = 'Login inválido';
+                $scope.apply();
             },
             
             function(e){
