@@ -4,10 +4,10 @@ angular.module('ClazzManager', [
   'ngRoute',
   'ClazzManager.diario_classe',
   'ClazzManager.listar-anotacoes', 
-  'ClazzManager.home'
+  'ClazzManager.home',
+  'ClazzManager.registro',
+  'ClazzManager.login'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: ''});
+  $routeProvider.otherwise({redirectTo: '/login'});
 }]);
-
-//$routeProvider.otherwise({redirectTo: '/home'});

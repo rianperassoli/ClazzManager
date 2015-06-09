@@ -128,6 +128,8 @@ D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\plugins\org.apache.c
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_home \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_login \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_registro \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao\adicionar-anotacao.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao\anotacao.js \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao\listar-anotacoes.html \
@@ -139,4 +141,8 @@ D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_class
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\visualizar_alunos.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_home\home.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_home\home.js \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_login\login.html \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_login\login.js \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_registro\registro.html \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_registro\registro.js \
 D:\Workspaces\TCC\ClazzManager\platforms\android\ant-build\AndroidManifest.xml \

@@ -69,11 +69,11 @@ function prepareDatabase() {
  
         t.executeSql(criarTabela + 'Pessoa(codigo INTEGER PRIMARY KEY AUTOINCREMENT, '+
                                            'pessoa_Tipo INTEGER NOT NULL, '+
-                                           'contato_codigo INTEGER not null, '+
-                                           'login_codigo INTEGER NOT NULL, '+
+                                           'contato_codigo INTEGER, '+
+                                           'login_codigo INTEGER, '+
                                            'nome TEXT NOT NULL, '+
                                            'dataNascimento TEXT NOT NULL, '+
-                                           'genero TEXT NOT NULL, '+
+                                           'genero TEXT, '+
                                            'situacao TEXT NOT NULL, '+
                                            'nivelAcesso INTEGER, '+
                                            'foto BLOB, '+
@@ -143,18 +143,19 @@ function prepareDatabase() {
         
     t.executeSql("insert into Tipo_Arquivo(tipo, descricao) values ('JPEG', 'Documento de imagem .JPEG')");    
     t.executeSql("insert into Pessoa_Tipo(tipo) values ('aluno')");
+    t.executeSql("insert into Pessoa_Tipo(tipo) values ('professor')");
     t.executeSql("insert into Tipo_Turma(descricao) values ('turma regular')"); 
     t.executeSql("insert into Curso(descricao) values ('Sistemas de informação')"); 
     t.executeSql("insert into Sala(descricao) values ('Bloco E2')"); 
     t.executeSql("insert into Disciplina(descricao) values ('Matemática')"); 
-    t.executeSql("insert into Login(usuario, senha) values ('rian', '1234')"); 
+    t.executeSql("insert into Login(usuario, senha) values ('rian', '1234')");
     t.executeSql("insert into Midia(tipo, descricao) values ('video', 'www.youtube.com.br')");
     t.executeSql("insert into Turno(descricao, horaInicio, horaTermino) values ('Noturno', '19:00:00', '23:00:00')");  
     t.executeSql("insert into Avaliacao(descricao, dataHora) values ('Prova A1', '07/10/2015 19:00:00')");
     t.executeSql("insert into Contato (tipoDeContato, DescricaoContato) values ('email', 'rian.perassoli@gmail,com')");
     t.executeSql("insert into Aula (data, descricao, horaInicio, horaFim) values ('07/10/2015', 'aula a noite', '19:00:00', '23:00:00')");
     t.executeSql("insert into Comentario(aula_codigo, descricao, dataHora) values (1, 'Video bom', '06/10/2014 22:01:00')");
-    t.executeSql("insert into Pessoa (pessoa_Tipo, contato_codigo, login_codigo, nome, dataNascimento, genero, situacao, nivelAcesso) values (1, 1, 1, 'Rian', '03/06/1992', 'M', 'ativo', 3)");
+    t.executeSql("insert into Pessoa (pessoa_Tipo, contato_codigo, login_codigo, nome, dataNascimento, genero, situacao, nivelAcesso) values (1, 1, 1, 'Rian', '1992-06-03', 'M', 'ativo', 3)");
     t.executeSql("insert into Turma (turno, professor, tipo_Turma, curso, sala, serie, dataInicio, dataFim) values (1, 1, 1, 1, 1, '3ª', '06/10/2014', '06/10/2015')");
     t.executeSql("insert into Diario_classe (aula, descricao) values (1, 'turma bla teste')");
     t.executeSql("insert into Presenca (aula, pessoa, dataHora, situacao, observacao) values (1, 1, '07/10/2015 19:00:00', 'Presente', 'ok')");

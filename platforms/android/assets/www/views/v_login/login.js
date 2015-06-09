@@ -9,10 +9,6 @@ angular.module('ClazzManager.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location) {
-        
-        $scope.Entrar = function (){
-            $location.path("/home");
-        };
+.controller('LoginCtrl', [function() {
               
 }]);
