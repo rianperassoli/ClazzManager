@@ -7,56 +7,21 @@
 
 <div class="row">
     <div class="col-xs-9">
-        <p class="text-center"><b>Alunos</b></p>
+        <p class="text-center"><b>Aulas</b></p>
     </div>
     <div class="col-xs-3">
-        <button type="button" class="btn btn-primary input-wide" ng-click="salvar()"><i class="glyphicon glyphicon-floppy-disk"></i></button>
+        <button type="button" class="btn btn-primary input-wide" ng-click="novaAula()"><i class="glyphicon glyphicon-plus-sign"></i></button>
     </div>
 </div>
 
-<div class="row">Data:<input type="date" placeholder="teste" ng-model="presencas.data" value="{{data}}" class="input-lg input-wide" /></div>
-
-<div ng-controller="ListaAlunoCtrl">    
-    <div  class="row" ng-repeat="mostraAluno in alunos">
-        <div class="col-xs-1" >
-            <img src="img/pessoadefault.png" class="img-circle img-responsive">
-        </div>
-        <div class="col-xs-10" >
-            <b>{{ mostraAluno.codigo }} - {{ mostraAluno.nome }}</b>
-        </div>
-        <div class="col-xs-1">
-             <input type="checkbox"/>
-        </div>
+<div  class="row" ng-repeat="mostraAulas in aulas">
+    <div class="col-xs-7" >
+        <a href="#/listar_aula/{{mostraAulas.codigo}}"><b>{{ mostraAulas.codigo }} - {{ mostraAulas.data }} <br/></b> {{mostraAulas.descricao}}</a>
+    </div>
+    <div class="col-xs-2">
+        <button type="button" class="btn btn-warning input-wide" ng-click="editar(mostraAulas)"><i class="glyphicon glyphicon-pencil center-block"></i></button>
+    </div>
+    <div class="col-xs-2">
+        <button type="button" class="btn btn-danger input-wide" ng-click="excluir(mostraAulas)"><i class="glyphicon glyphicon-trash center-block"></i></button>
     </div>
 </div>
-
-
-<!--
-
-<table class="lista-visualizar">
-    <tr>
-        <td>Aluno aisudhisa </td>
-        <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-        <td>Aluno aisudhisa </td>
-        <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-        <td>Aluno aisudhisa </td>
-        <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-        <td>Aluno aisudhisa </td>
-        <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-        <td>Aluno aisudhisa </td>
-        <td><input type="checkbox"></td>>
-    </tr>
-    <tr>
-        <td>Aluno aisudhisa </td>
-        <td><input type="checkbox"></td>
-    </tr>
-</table>
--->

@@ -5,6 +5,8 @@
   <li role="presentation"><a href="#/diario_classe/listar_avaliacoes">Avaliações</a></li>
 </ul>
 
+
+
 <div class="row">
     <div class="col-xs-9">
         <p class="text-center"><b>Alunos</b></p>
@@ -19,12 +21,14 @@
         <img src="img/pessoadefault.png" class="img-circle img-responsive">
     </div>
     <div class="col-xs-6" >
-        <a href="#/listar_alunos/{{mostraAluno.codigo}}"><b>{{ mostraAluno.codigo }} - {{ mostraAluno.nome }}</b></a> <br> {{ mostraAluno.dataNascimento }}
+        <a href="#/listar_alunos/{{mostraAluno.codigo}}"><b>{{ mostraAluno.codigo }} - {{ mostraAluno.nome }} <br/></b> Aluno {{mostraAluno.situacao}}</a>
     </div>
     <div class="col-xs-3">
         <button type="button" class="btn btn-danger input-wide" ng-click="excluir(mostraAluno)"><i class="glyphicon glyphicon-trash center-block"></i></button>
     </div>
 </div>
+
+
 
 <ul class="nav nav-tabs navbar-fixed-bottom">
     <li class="dropup" ng-style="{ 'width' : '100%'}">
