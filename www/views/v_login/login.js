@@ -21,17 +21,17 @@ angular.module('ClazzManager.login', ['ngRoute'])
 
     $scope.ValidaUsuario = function(){
         $scope.db.transaction(function(tx){
-        tx.executeSql("SELECT * FROM Login WHERE usuario=? AND senha=?", [$scope.login.usuario, $scope.login.senha], 
-        function (tx, rs) {
-            if (rs.rows.length > 0){
-                $scope.mensagem = '';
-                $scope.login.codigo = rs.rows.item(0).codigo;                
-                $scope.Entrar();
-            } else 
-                $scope.mensagem = 'Login inválido';
-                $scope.apply();
+            tx.executeSql("SELECT * FROM Login WHERE usuario=? AND senha=?", [$scope.login.usuario, $scope.login.senha], 
+            function (tx, rs) {
+                if (rs.rows.length > 0){
+                    $scope.mensagem = '';
+                    $scope.login.codigo = rs.rows.item(0).codigo;                
+                    $scope.Entrar();
+                } else {
+                    $scope.mensagem = 'Login inválido';            
+                };
             },
-            
+
             function(e){
                 alert("Erro: " + e.message);
             });

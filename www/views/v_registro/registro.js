@@ -58,27 +58,49 @@ angular.module('ClazzManager.registro', ['ngRoute'])
                         } else {
                             $scope.db.transaction(function(t) {                
                                 t.executeSql("insert into Login (usuario, senha) values (?, ?)", [$scope.registro.login, $scope.registro.senha], function(t, results) {
-                                    alert('Usuário cadastrado com sucesso');
+
+                                    console.log('usuário cadastrado com sucesso');
                                   
-                                    t.executeSql("select * from Login where usuario = ? and senha = ?", [$scope.registro.login, $scope.registro.senha], function(t, results) {
-                                        t.executeSql("update Pessoa set login_codigo = ? where codigo = ? "[results.rows.item(0).login_codigo, $scope.registro.codigo],null, null);                                    
-                                    }), function(e){
-                                        alert('Erro: '+ e.message);
-                                    };
+                                    t.executeSql("select * from Login where usuario = ? and senha = ?", [$scope.registro.login, $scope.registro.senha], function(t, results) {                                       
+                                        t.executeSql("update Pessoa set login_codigo = ? where codigo = ? ", [results.rows.item(0).codigo, $scope.registro.codigo],function(){console.log('pessoa recebeu o codigo de login');});
+                                    });
                                     
-                                }), function(e){
-                                    alert('Erro: '+ e.message);
-                                };
+                                });
                             });
                         };                        
                     } else {                        
-                        //insete a pessoa e o login
+                        $scope.db.transaction(function(t) {
+                            t.executeSql("insert into Login (usuario, senha) values (?, ?)", [$scope.registro.login, $scope.registro.senha], 
+                            function(t, results) {
+                                console.log('login inserido');
+                                
+                                t.executeSql("insert into Pessoa (pessoa_Tipo, login_codigo, nome, dataNascimento, situacao, nivelAcesso) values (?, ?, ?, ?, ?, ?)", 
+                                [$scope.registro.tipoPessoa, 0, $scope.registro.nome, $scope.registro.dataNascimento, 'ativo', 1], 
+                                function(t, results) {console.log('Usuário cadastrado com sucesso');});
+                            });
+                            
+                        });
+                        
+                        $scope.db.transaction(function(t) {
+                            
+                            t.executeSql("select codigo from Pessoa where nome = ? and dataNascimento = ?", [$scope.registro.nome, $scope.registro.dataNascimento], 
+                            function(t, results) {                             
+                                $scope.registro.codigo = results.rows.item(0).codigo;
+                                
+                                t.executeSql("select * from Login where usuario = ? and senha = ? ", [$scope.registro.login, $scope.registro.senha],
+                                function(){
+                                    t.executeSql("select * from Login where usuario = ? and senha = ? ", [$scope.registro.login, $scope.registro.senha],function(){
+                                        t.executeSql("update Pessoa set login_codigo = ? where codigo = ? ", [results.rows.item(0).codigo, $scope.registro.codigo],function(){console.log('pessoa recebeu o codigo de login');});
+                                    });
+                                });                                                
+                            });                            
+                        });
                     };
-                });
-                                                
-                $location.path("/login");
+                });                                                                
             });
-        }
+            
+            $location.path("/login");
+        };
     };
     
     $scope.cancelar = function(){
