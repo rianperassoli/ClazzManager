@@ -28,8 +28,14 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
     templateUrl: 'views/v_diario_classe/adicionar-aula.html',
     controller: 'AulaCtrl'
   })
-        
-        
+  .when('/diario_classe/editar-aula/:codigo', {
+    templateUrl: 'views/v_diario_classe/adicionar-aula.html',
+    controller: 'EditarAulaCtrl'
+  })
+  .when('/lancar_presencas/:codigo', {
+    templateUrl: 'views/v_diario_classe/lancar-presenca.html',
+    controller: 'PresencaCtrl'
+  })      
         
    .when('/diario_classe/visualizar/:id', {
     templateUrl: 'views/v_diario_classe/visualizar_alunos.html',
@@ -98,7 +104,7 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
 
     $scope.cancelar = function(){
        $location.path("/listar_alunos");
-    };   
+    };
     
 }])
 .controller('ListaAlunoCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
@@ -142,11 +148,31 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
    
 }])
 .controller('PresencaCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
-//    $scope.data = new Date();
-//    $scope.aula = {codigo:null, data:null, descricao:null, horaInicio:null, horaFim:null};
-//    $scope.aulas = [];
-//
-//    $scope.db = prepareDatabase();
+    $scope.alunos = [];
+    $scope.presenca = {codigo:null, pessoa:0, dataHora:'', situacao:'', observacao:''};
+    $scope.db = prepareDatabase();
+    
+    function listarAlunos(){
+        $scope.listaVazia = '';
+        $scope.db.transaction(function(t) {
+            t.executeSql("SELECT * FROM Pessoa where pessoa_tipo = ? and situacao = ?", [1, 'ativo'], function(t, results) {
+                $scope.alunos.splice(0, $scope.alunos.length);
+                for (var i = 0; i < results.rows.length; i++) {
+                  var record = results.rows.item(i);                  
+                  $scope.alunos.push(record); 
+                }
+                $scope.$apply();
+            }, function(t, e) {               
+                $scope.listaVazia = 'Não possuem alunos cadastradas';
+                $scope.$apply();
+            });
+        });
+    }
+    
+    $scope.init = function(){
+        listarAlunos();        
+    };
+    $scope.init();
 //    
 //    function listarAulas(){
 //        $scope.listaVazia = '';
@@ -181,9 +207,9 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
 //        }
 //    };
 //
-//    $scope.novaAula = function() {
-//        $location.path("/diario_classe/adicionar-aula");
-//    };
+    $scope.cancelar = function() {
+        $location.path("/diario_classe/listar_presencas");
+    };
    
 }])
 .controller('AulaCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
@@ -258,18 +284,74 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
     };
 
     $scope.editar = function(mostraAulas){
-        $location.path("/diario_classe/adicionar-aula");
-              
-        $scope.aula.codigo = mostraAulas.codigo;
-        $scope.aula.descricao = mostraAulas.descricao; 
-        $scope.aula.data = mostraAulas.data;
-        $scope.aula.horaInicio = mostraAulas.horaInicio;
-        $scope.aula.horaFim = mostraAulas.horaFim;                
+        $location.path("/diario_classe/editar-aula/" + mostraAulas.codigo);
+        console.log(mostraAulas);
     };
 
 
     $scope.novaAula = function() {
         $location.path("/diario_classe/adicionar-aula");
     };
+    
+    
+    $scope.cancelar = function(){
+       $location.path("/diario_classe/listar_presencas");
+    };
    
+}])
+.controller('EditarAulaCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
+    $scope.db = prepareDatabase();
+    $scope.aula = {codigo:null, data:'', descricao:'', horaInicio:'', horaFim:''};
+    
+    $scope.init = function(){
+        if($routeParams.codigo !== null){
+            $scope.db.transaction(function(t) {
+                t.executeSql("SELECT * FROM Aula where codigo = ?", [$routeParams.codigo], 
+                function(t, results) {                                        
+                    var record = results.rows.item(0);
+                    console.log(record);
+                    console.log($scope.aula);
+                    $scope.aula.codigo = record.codigo;
+                    $scope.aula.descricao = record.descricao; 
+                    $scope.aula.data = record.data;
+                    $scope.aula.horaInicio = record.horaInicio;
+                    $scope.aula.horaFim = record.horaFim;
+                    
+                    $scope.$apply();
+                }, function(e) {               
+                    alert("Error: " + e.message);
+                });              
+            });            
+        };
+    };
+    $scope.init();
+    
+    $scope.salvar = function(){
+        if ($scope.aula.descricao === ''){
+          alert('O campo descricao deve ser preenchido');              
+        } else if ($scope.aula.data === ''){ 
+          alert('O campo de data deve ser preenchido');
+        } else if ($scope.aula.horaInicio === ''){ 
+          alert('O campo de data deve ser preenchido');
+        } else if ($scope.aula.horaFim === ''){ 
+          alert('O campo de data deve ser preenchido');
+        } else {
+            
+            $scope.db.transaction(function(t) {
+                t.executeSql("update aula set data = ?, descricao = ?, horaInicio = ?, horaFim = ?  where codigo = ?", [$scope.aula.data, $scope.aula.descricao, $scope.aula.horaInicio, $scope.aula.horaFim, $scope.aula.codigo], 
+                function(t, results) {
+                    alert('Registro alterado com sucesso') ;                
+                }, function(e) {                       
+                    alert("Error: " + e.message);
+                });
+            });
+
+            $location.path("/diario_classe/listar_presencas");
+        }
+    };
+    
+    $scope.cancelar = function(){
+       $location.path("/diario_classe/listar_presencas");
+    };
+
 }]);

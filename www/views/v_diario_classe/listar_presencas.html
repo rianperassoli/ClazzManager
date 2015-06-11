@@ -16,7 +16,7 @@
 
 <div  class="row" ng-repeat="mostraAulas in aulas">
     <div class="col-xs-7" >
-        <a href="#/listar_aula/{{mostraAulas.codigo}}"><b>{{ mostraAulas.codigo }} - {{ mostraAulas.data }} <br/></b> {{mostraAulas.descricao}}</a>
+        <a href="#/lancar_presencas/{{mostraAulas.codigo}}"><b>{{ mostraAulas.codigo }} - {{ mostraAulas.data }} <br/></b> {{mostraAulas.descricao}}</a>
     </div>
     <div class="col-xs-2">
         <button type="button" class="btn btn-warning input-wide" ng-click="editar(mostraAulas)"><i class="glyphicon glyphicon-pencil center-block"></i></button>
