@@ -40,9 +40,9 @@ body { padding-bottom: 80px; }
 
 #link-registrar{
     position: absolute;
-    bottom: 10px;
-    text-align: center;
-    width: 100%;
+    right: 15px;
+    text-align: right;
+    width: 100px;
 }
 
 .input-wide{

@@ -50,7 +50,7 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
     $scope.db = prepareDatabase();
     
     $scope.init = function(){
-        if($routeParams.codigo !== null){
+        if($routeParams.codigo !== undefined){
             $scope.db.transaction(function(t) {
                 t.executeSql("SELECT * FROM Pessoa where pessoa_tipo = ? and codigo = ?", [ 1, $routeParams.codigo], 
                 function(t, results) {                    
@@ -149,7 +149,7 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
 }])
 .controller('PresencaCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
     $scope.alunos = [];
-    $scope.presenca = {codigo:null, pessoa:0, dataHora:'', situacao:'', observacao:''};
+    var presenca = {codigo:null, aula:'', pessoa:0, dataHora:'', situacao:'', observacao:''};
     $scope.db = prepareDatabase();
     
     function listarAlunos(){
@@ -159,7 +159,7 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
                 $scope.alunos.splice(0, $scope.alunos.length);
                 for (var i = 0; i < results.rows.length; i++) {
                   var record = results.rows.item(i);                  
-                  $scope.alunos.push(record); 
+                  $scope.alunos.push({ aluno:record, presente:false, obs:'' });                   
                 }
                 $scope.$apply();
             }, function(t, e) {               
@@ -167,46 +167,38 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
                 $scope.$apply();
             });
         });
-    }
+    };
     
     $scope.init = function(){
         listarAlunos();        
     };
     $scope.init();
-//    
-//    function listarAulas(){
-//        $scope.listaVazia = '';
-//        $scope.db.transaction(function(t) {
-//            t.executeSql("SELECT * FROM Aula", [], function(t, results) {
-//                console.log(results);
-//                $scope.aulas.splice(0, $scope.aulas.length);
-//                for (var i = 0; i < results.rows.length; i++) {
-//                    var record = results.rows.item(i);                  
-//                    $scope.aulas.push(record); 
-//                }
-//                $scope.$apply();
-//            }, function(e) {
-//                alert(e.message);
-//                $scope.listaVazia = 'Não possuem aulas cadastradas';
-//                $scope.$apply();
-//            });
-//        });
-//    }
-//    
-//    $scope.init = function(){
-//        listarAulas();        
-//    };
-//    $scope.init();
-//
-//    $scope.excluirAula = function(aula) {
-//        if (confirm('Deseja excluir esta aula \n' + aula.codigo + ' - '  + aula.data + '. '  + aula.descricao + '?') === true){
-//            $scope.db.transaction(function(t) {
-//                t.executeSql("delete from aula where codigo = ?", [aula.codigo], null, null);
-//                listarAulas();
-//            });
-//        }
-//    };
-//
+   
+    $scope.salvar = function(){
+        $scope.db.transaction(function(t) {
+            for (var i = 0; i < $scope.alunos.length; i++){        
+                var presenca = {codigo:null, aula:'', pessoa:0, dataHora:'', situacao:'', observacao:''};
+                
+                presenca.aula = $routeParams.codigo;
+                presenca.pessoa = $scope.alunos[i].aluno.codigo;
+                if ($scope.alunos[i].presente) 
+                    presenca.situacao = 'presente';
+                else
+                    presenca.situacao = 'ausente';
+                presenca.observacao = $scope.alunos[i].obs;
+
+                console.log(presenca);
+
+                t.executeSql("insert into Presenca (aula, pessoa, dataHora, situacao, observacao) values  (?, ?, DateTime(), ?, ?)", 
+                [presenca.aula, presenca.pessoa, presenca.situacao, presenca.observacao], 
+                console.log('registro salvo com sucesso. Codigo: ' + presenca.pessoa), 
+                function(t, e) {                        
+                    console.log("Error: " + e.message);
+                });                
+            }; 
+        });
+    };
+
     $scope.cancelar = function() {
         $location.path("/diario_classe/listar_presencas");
     };

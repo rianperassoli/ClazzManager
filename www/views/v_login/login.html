@@ -5,6 +5,7 @@
 
 <label class="narrow-control label-inline" for="edt-login">Login:</label>
 <label class="label label-danger">{{mensagem}}</label>
+<a id="link-registrar" href="#/registro">Registrar-se</a>
 <input class="wide-control form-control default" type="text" placeholder="insira o nome de usuário..." id="edt-login" ng-model="login.usuario">
 
 <label class="narrow-control label-inline">Senha:</label>
@@ -13,7 +14,3 @@
 <button class="btn btn-lg btn-success input-wide" ng-click="ValidaUsuario()" style="margin-top: 10px" id="btn-entrar">Entrar</button>
 
 <button class="btn btn-lg btn-danger input-wide" id="btn-sair">Sair</button>
-
-<br/>
-
-<a id="link-registrar" href="#/registro">Registrar-se</a>

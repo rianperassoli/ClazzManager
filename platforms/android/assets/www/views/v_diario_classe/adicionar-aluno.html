@@ -1,35 +1,40 @@
 <form role="form" >
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary" ng-click="salvar()"><i class="glyphicon glyphicon-ok"></i> Salvar</button>
+        </div>
+        
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-danger" ng-click="cancelar()"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+        </div>
+    </div>    
     
-    <div class="row">
-        <div class="col-xs-9">
-            <p class="text-center"><b>Aluno</b></p>
-        </div>
-        <div class="col-xs-3">
-            <a class="btn btn-add" href="#/listar_alunos"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
+    <div >
+        <p class="text-center"><b>Aluno</b></p>
     </div>
     
     <div class="form-group">
-        <input type="text" placeholder="Informe o nome" class="input-lg input-wide" ng-model="aluno.nome"/>
+        <input type="text" placeholder="Nome do aluno..." class="input-lg input-wide" ng-model="aluno.nome"/>
     </div>
     
     <div class="form-group">
-        Data de Nascimento:<input type="date" ng-model="aluno.dataNascimento" class="input-lg input-wide" value="{{aluno.dataNascimento}}" />
+        <b>
+            Data de Nascimento:<input type="date" ng-model="aluno.dataNascimento" class="input-lg input-wide" value="{{aluno.dataNascimento}}" />
+        </b>
     </div>
     
-   
-    <div class="form-group"> Gênero:
-        <input type="radio" ng-model="aluno.genero" value="M">Masculino
-        <input type="radio" ng-model="aluno.genero" value="F">Feminino
-    </div>
+    <h3>
+        <b>Gênero:
+            <label class="radio-inline"><input type="radio" ng-model="aluno.genero" value="M">Masculino</label>
+            <label class="radio-inline"><input type="radio" ng-model="aluno.genero" value="F">Feminino</label>
+        </b>
+    </h3>
     
-    <div class="row">
-        <div class="col-xs-6">
-            <button type="button" class="btn btn-primary input-wide" ng-click="cancelar()"><i class="glyphicon glyphicon-remove"></i>Cancelar</button>
-        </div>
-        <div class="col-xs-6">
-            <button type="button" class="btn btn-primary input-wide" ng-click="salvar()"><i class="glyphicon glyphicon-floppy-disk"></i>Salvar</button>
-        </div>
-    </div>
+    <h3>
+        <b>Status:
+            <label class="radio-inline"><input type="radio" ng-model="aluno.situacao" value="inativo">Inativo</label>
+            <label class="radio-inline"><input type="radio" ng-model="aluno.situacao" value="ativo">Ativo</label>
+        </b>
+    </h3>
     
 </form>

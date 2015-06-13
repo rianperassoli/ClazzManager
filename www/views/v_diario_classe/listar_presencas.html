@@ -14,14 +14,29 @@
     </div>
 </div>
 
-<div  class="row" ng-repeat="mostraAulas in aulas">
-    <div class="col-xs-7" >
-        <a href="#/lancar_presencas/{{mostraAulas.codigo}}"><b>{{ mostraAulas.codigo }} - {{ mostraAulas.data }} <br/></b> {{mostraAulas.descricao}}</a>
-    </div>
-    <div class="col-xs-2">
-        <button type="button" class="btn btn-warning input-wide" ng-click="editar(mostraAulas)"><i class="glyphicon glyphicon-pencil center-block"></i></button>
-    </div>
-    <div class="col-xs-2">
-        <button type="button" class="btn btn-danger input-wide" ng-click="excluir(mostraAulas)"><i class="glyphicon glyphicon-trash center-block"></i></button>
-    </div>
-</div>
+<table class="table table-striped">
+    <tr>
+        <th style="width: 10px">
+            #
+        </th>
+        <th>
+            Aula
+        </th>
+        <th style="width: 5%"></th>
+        <th style="width: 5%"></th>
+    </tr>
+    <tr ng-repeat="mostraAulas in aulas">
+        <td class="text-center">
+            {{ mostraAulas.codigo }}
+        </td>
+        <td>
+            <a href="#/lancar_presencas/{{mostraAulas.codigo}}"><b>{{ mostraAulas.data }} <br/></b> {{mostraAulas.descricao}}</a>
+        </td>
+        <td class="text-center">
+            <button type="button" class="btn btn-warning input-wide" ng-click="editar(mostraAulas)"><i class="glyphicon glyphicon-pencil center-block"></i></button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger input-wide" ng-click="excluir(mostraAulas)"><i class="glyphicon glyphicon-trash center-block"></i></button>
+        </td>
+    </tr>
+</table>

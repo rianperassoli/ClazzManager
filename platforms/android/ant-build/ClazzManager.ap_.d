@@ -134,7 +134,10 @@ D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao\adi
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao\anotacao.js \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_anotacao\listar-anotacoes.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\adicionar-aluno.html \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\adicionar-aula.html \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\adicionar-avaliacao.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\diario_classe.js \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\lancar-presenca.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\listar_alunos.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\listar_avaliacoes.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\listar_presencas.html \

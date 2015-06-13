@@ -2,13 +2,17 @@
     <img id='logo-home' src="img/logo.png" width="800" height="352" alt="logo"/>
 </div>
 
-
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="menu-principal">
-    <div class="container">
-        <ul class="nav navbar-nav">
-            <li><a href="#/home"><i class="glyphicon glyphicon-home"></i></a></li>
-            <li><a href="#/listar_alunos"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-            <li><a href="#/listar-anotacoes"><i class="glyphicon glyphicon-pencil"></i></a></li>                  
-        </ul>
-    </div>
-</nav>
+<ul class="nav nav-tabs navbar-fixed-bottom">
+    <li class="dropup" ng-style="{ 'width' : '100%'}">
+        <a class="dropdown-toggle text-center" data-toggle="dropdown">
+            <b>MENU</b>
+            <b class="caret"></b>
+        </a>
+        
+        <ul class="dropdown-menu" ng-style="{ 'width' : '100%'}">
+            <li><a href="#/home" class="text-center" ng-style="{'background':'#E3EAF4'}"><i class="glyphicon glyphicon-home"></i><b>  HOME</b></a></li>
+            <li><a href="#/listar_alunos" class="text-center"><i class="glyphicon glyphicon-list-alt"></i><b>  DIÁRIO DE CLASSE</b></a></li>
+            <li><a href="#/listar-anotacoes" class="text-center"><i class="glyphicon glyphicon-pencil"></i><b>  ANOTAÇÕES</b></a></li>   
+        </ul>        
+    </li>
+</ul>
