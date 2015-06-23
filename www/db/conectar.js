@@ -114,10 +114,10 @@ function prepareDatabase() {
                                          'pessoa INTEGER NOT NULL, '+
                                          'avaliacao INTEGER NOT NULL, '+
                                          'diario_Classe INTEGER NOT NULL, '+
-                                         'nota TEXT NOT NULL, '+
+                                         'nota decimal NOT NULL, '+
                                          'dataHora TEXT NULL, '+
                                          'FOREIGN KEY ( Pessoa ) REFERENCES Pessoa ( codigo ), '+
-                                         'FOREIGN KEY ( Avaliacao ) REFERENCES Avaliacao ( codigo ), '+
+                                         'FOREIGN KEY ( Avaliacao ) REFERENCES Avaliacao ( codigo ),' +
                                          'FOREIGN KEY ( Diario_Classe ) REFERENCES Diario_Classe ( codigo ))');
     
        t.executeSql(criarTabela + 'Material( codigo INTEGER PRIMARY KEY AUTOINCREMENT, '+

@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Workspaces/TCC/ClazzManager/www/views/v_diario_classe/adicionar-avaliacao.html</file>
             <file>file:/D:/Workspaces/TCC/ClazzManager/www/views/v_diario_classe/diario_classe.js</file>
+            <file>file:/D:/Workspaces/TCC/ClazzManager/www/views/v_diario_classe/listar_avaliacoes.html</file>
+            <file>file:/D:/Workspaces/TCC/ClazzManager/www/views/v_diario_classe/lancar-notas.html</file>
+            <file>file:/D:/Workspaces/TCC/ClazzManager/www/views/v_diario_classe/lancar-presenca.html</file>
+            <file>file:/D:/Workspaces/TCC/ClazzManager/www/db/conectar.js</file>
+            <file>file:/D:/Workspaces/TCC/ClazzManager/www/views/v_diario_classe/listar_presencas.html</file>
         </group>
     </open-files>
 </project-private>

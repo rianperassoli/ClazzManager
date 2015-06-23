@@ -1,0 +1,42 @@
+<form role="form">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary" ng-click="validarNotas()"><i class="glyphicon glyphicon-ok"></i> Salvar</button>
+        </div>
+        
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-danger" ng-click="cancelar()"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+        </div>
+    </div>    
+    
+    <div >
+        <p class="text-center"><b>Avaliar alunos</b></p>
+    </div>
+        
+    <table class="table table-striped">
+        <tr>
+            <th style="width: 10px">
+                #
+            </th>
+            <th>
+                Aluno
+            </th>
+            <th style="width: 30px">
+                Nota
+            </th>
+        </tr>
+        <tr ng-repeat="mostraAluno in alunos">
+            <td class="text-center">
+                {{ mostraAluno.aluno.codigo }}
+            </td>
+            <td>
+                <a data-toggle="modal" data-target="#modal-obs-{{mostraAluno.aluno.codigo}}" ><b>{{ mostraAluno.aluno.nome }}</b></a>                               
+            </td>
+            <td class="text-center">
+                <input type="number" pattern="[0-9]+,[0-9][0-9]" ng-model="mostraAluno.nota" />
+            </td>
+        </tr>
+    </table>
+
+    
+</form>
