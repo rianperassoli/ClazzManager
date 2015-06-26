@@ -38,11 +38,16 @@ body { padding-bottom: 80px; }
   margin-bottom: 50px !important;
 }
 
+#foto{
+    max-width: 150px !important;
+    max-height: 150px !important;
+}
+
 #link-registrar{
     position: absolute;
     right: 15px;
     text-align: right;
-    width: 100px;
+    width: 200px;
 }
 
 .input-wide{

@@ -1,5 +1,14 @@
-<div >
-    <img id='logo-home' src="img/logo.png" width="800" height="352" alt="logo"/>
+<div class="row">
+    <div class="col-xs-8">
+        <p class="text-center"><h2><b>Ola {{usuarioLogado.nome}}</b></h2></p>
+    </div>
+    <div class="col-xs-4">
+        <button type="button" class="btn btn-primary input-wide" ng-click="sair()"><i class="glyphicon glyphicon-log-out"></i>Logout</button>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 10%">
+    <img id='logo-home' src="img/logo.png" alt="logo"/>
 </div>
 
 <ul class="nav nav-tabs navbar-fixed-bottom">

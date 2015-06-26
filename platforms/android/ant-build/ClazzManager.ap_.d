@@ -51,11 +51,18 @@ D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\fonts\glyphicons-hal
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\fonts\glyphicons-halflings-regular.svg \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\fonts\glyphicons-halflings-regular.ttf \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\fonts\glyphicons-halflings-regular.woff \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\H_HDPI.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\H_LDPI.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\H_MDPI.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\H_XHDPI.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\icone128.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\logo.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\pessoadefault.png \
-D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\Splash.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\student.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\V_HDPI.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\V_LDPI.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\V_MDPI.png \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\img\V_XHDPI.png \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\js\angular \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\js\angular-loader \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\js\angular-mocks \
@@ -137,6 +144,7 @@ D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_class
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\adicionar-aula.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\adicionar-avaliacao.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\diario_classe.js \
+D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\lancar-notas.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\lancar-presenca.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\listar_alunos.html \
 D:\Workspaces\TCC\ClazzManager\platforms\android\assets\www\views\v_diario_classe\listar_avaliacoes.html \

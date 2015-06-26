@@ -9,6 +9,15 @@ angular.module('ClazzManager.home', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', [function() {
-              
+.controller('HomeCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location){
+        
+    $scope.init = function(){
+        console.log($rootScope.usuarioLogado + 'login, usuario');
+    };
+    $scope.init();
+      
+      
+    $scope.sair = function()  {
+        $location.path('login');
+    };
 }]);

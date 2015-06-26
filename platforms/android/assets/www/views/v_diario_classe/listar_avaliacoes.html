@@ -5,29 +5,38 @@
     <li role="presentation" class="active"><a href="#/diario_classe/listar_avaliacoes">Avaliações</a></li>
 </ul>
 
-<table class="lista-visualizar">
+<div class="row">
+    <div class="col-xs-9">
+        <p class="text-center"><b>Avaliações</b></p>
+    </div>
+    <div class="col-xs-3">
+        <button type="button" class="btn btn-primary input-wide" ng-click="novaAvaliacao()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+    </div>
+</div>
+
+<table class="table table-striped">
     <tr>
-        <td>Avaliacao</td>
-        <td><a href="#/diario_classe/visualizar/1">Abrir</a></td>
+        <th style="width: 10px">
+            #
+        </th>
+        <th>
+            Avaliação
+        </th>
+        <th style="width: 5%"></th>
+        <th style="width: 5%"></th>
     </tr>
-    <tr>
-        <td>Avaliacaoa</td>
-        <td><a href="#/diario_classe/visualizar/2">Abrir</a></td>
-    </tr>
-    <tr>
-        <td>Avaliacao</td>
-        <td><a href="#/diario_classe/visualizar/3">Abrir</a></td>
-    </tr>
-    <tr>
-        <td>Avaliacao</td>
-        <td><a href="#/diario_classe/visualizar/4">Abrir</a></td>
-    </tr>
-    <tr>
-        <td>Avaliacao</td>
-        <td><a href="#/diario_classe/visualizar/5">Abrir</a></td>
-    </tr>
-    <tr>
-        <td>Avaliacao</td>
-        <td><a href="#/diario_classe/visualizar/6">Abrir</a></td>
+    <tr ng-repeat="mostraAvaliacao in avaliacoes">
+        <td class="text-center">
+            {{ mostraAvaliacao.codigo }}
+        </td>
+        <td>
+            <a href="#/lancar-notas/{{mostraAvaliacao.codigo}}"><b>{{ mostraAvaliacao.descricao }} <br/></b> {{ mostraAvaliacao.dataHora }}</a>
+        </td>
+        <td class="text-center">
+            <button type="button" class="btn btn-warning input-wide" ng-click="editar(mostraAvaliacao)"><i class="glyphicon glyphicon-pencil center-block"></i></button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger input-wide" ng-click="excluir(mostraAvaliacao)"><i class="glyphicon glyphicon-trash center-block"></i></button>
+        </td>
     </tr>
 </table>

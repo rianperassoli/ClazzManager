@@ -11,3 +11,4 @@ angular.module('ClazzManager', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
 }]);
+

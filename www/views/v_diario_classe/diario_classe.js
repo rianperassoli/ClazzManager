@@ -87,7 +87,7 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
             if ($scope.aluno.codigo === null){
                 $scope.db.transaction(function(t) {
                     t.executeSql("insert into Pessoa (pessoa_Tipo, contato_codigo, login_codigo, nome, dataNascimento, genero, situacao, nivelAcesso) values  (?, ?, ?, ?, ?, ?, ?, ?)", 
-                    [1, 1, 1, $scope.aluno.nome, $scope.aluno.dataNascimento, $scope.aluno.genero, $scope.aluno.situacao, 3 ], function(t, results) {
+                    [1, 1, 0, $scope.aluno.nome, $scope.aluno.dataNascimento, $scope.aluno.genero, $scope.aluno.situacao, 3 ], function(t, results) {
                         alert('Registro salvo com sucesso') ;                
                     }, function(t, e) {
                         // couldn't read database
@@ -119,7 +119,6 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
     $scope.db = prepareDatabase();
     
     function listarAlunos(){
-        $scope.listaVazia = '';
         $scope.db.transaction(function(t) {
             t.executeSql("SELECT * FROM Pessoa where pessoa_tipo = ?", [1], function(t, results) {
                 $scope.alunos.splice(0, $scope.alunos.length);
@@ -129,11 +128,10 @@ angular.module('ClazzManager.diario_classe', ['ngRoute'])
                 }
                 $scope.$apply();
             }, function(t, e) {               
-                $scope.listaVazia = 'Não possuem alunos cadastradas';
                 $scope.$apply();
             });
         });
-    }
+    };
     
     $scope.init = function(){
         listarAlunos();        

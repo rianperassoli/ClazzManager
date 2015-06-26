@@ -21,7 +21,7 @@ angular.module('ClazzManager.registro', ['ngRoute'])
         navigator.camera.getPicture(onFotoSuccess, onFotoFail, {quality: 50, destinationType: Camera.DestinationType.DATA_URL});
         
         function onFotoSuccess(foto){
-            $scope.fotoPessoa = "data:image/jpeg;base64," + foto; 
+            $scope.registro.foto = "data:image/jpeg;base64," + foto; 
         }
         
         function onFotoFail(foto){
@@ -74,11 +74,17 @@ angular.module('ClazzManager.registro', ['ngRoute'])
                             function(t, results) {
                                 console.log('login inserido');
                                 
-                                t.executeSql("insert into Pessoa (pessoa_Tipo, login_codigo, nome, dataNascimento, situacao, nivelAcesso) values (?, ?, ?, ?, ?, ?)", 
-                                [$scope.registro.tipoPessoa, 0, $scope.registro.nome, $scope.registro.dataNascimento, 'ativo', 1], 
-                                function(t, results) {console.log('Usuário cadastrado com sucesso');});
-                            });
-                            
+                                t.executeSql("insert into Pessoa (pessoa_Tipo, login_codigo, nome, dataNascimento, situacao, nivelAcesso, foto) values (?, ?, ?, ?, ?, ?, ?)",
+                                [$scope.registro.tipoPessoa, 0, $scope.registro.nome, $scope.registro.dataNascimento, 'ativo', 1, $scope.registro.foto], 
+                                function(t, results) {                                    
+                                    console.log('Usuário cadastrado com sucesso');
+                                }, function(t,e){
+                                    console.log('Erro: ' + e.message);
+                                });
+                                
+                            }, function(t,e){
+                                console.log('Erro: ' + e.message);
+                            });                                                       
                         });
                         
                         $scope.db.transaction(function(t) {

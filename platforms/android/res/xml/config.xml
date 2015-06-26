@@ -8,14 +8,14 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
-    <splash density="land-hdpi" src="www/img/splash.png" />
-    <splash density="land-ldpi" src="www/img/splash.png" />
-    <splash density="land-mdpi" src="www/img/splash.png" />
-    <splash density="land-xhdpi" src="www/img/splash.png" />
-    <splash density="port-hdpi" src="www/img/splash.png" />
-    <splash density="port-ldpi" src="www/img/splash.png" />
-    <splash density="port-mdpi" src="www/img/splash.png" />
-    <splash density="port-xhdpi" src="www/img/splash.png" />
+    <splash density="land-hdpi" src="www/img/H_HDPI.png" />
+    <splash density="land-ldpi" src="www/img/H_LDPI.png" />
+    <splash density="land-mdpi" src="www/img/H_MDPI.png" />
+    <splash density="land-xhdpi" src="www/img/H_XHDPI.png" />
+    <splash density="port-hdpi" src="www/img/V_HDPI.png" />
+    <splash density="port-ldpi" src="www/img/V_LDPI.png" />
+    <splash density="port-mdpi" src="www/img/V_MDPI.png" />
+    <splash density="port-xhdpi" src="www/img/V_XHDPI.png" />
     <icon density="mdpi" src="www/img/icone128.png" />
     <icon density="hdpi" src="www/img/icone128.png" />
     <icon density="xhdpi" src="www/img/icone128.png" />
