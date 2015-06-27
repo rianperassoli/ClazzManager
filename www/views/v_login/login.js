@@ -11,7 +11,7 @@ angular.module('ClazzManager.login', ['ngRoute'])
 
 .controller('LoginCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
 
-    $scope.mensagem = '';
+    $scope.mensagem = '';   
     $scope.login = {codigo:null, usuario:'', senha:''};
     $scope.db = prepareDatabase();
     $rootScope.usuarioLogado = {nome: '', tipoAluno: false, foto:''};
